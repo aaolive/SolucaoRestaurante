@@ -1,0 +1,6 @@
+@Restaurante.ServicoCardapio_HostAddress = http://localhost:5094
+
+GET {{Restaurante.ServicoCardapio_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
