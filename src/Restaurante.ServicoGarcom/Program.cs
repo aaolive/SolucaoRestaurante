@@ -1,11 +1,25 @@
 using MassTransit;
+using Microsoft.EntityFrameworkCore;
 using Restaurante.ServicoGarcom.Consumidores;
+using Restaurante.ServicoGarcom.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+
+// CONFIGURAÇÃO DO BANCO DE DADOS
+
+// 1. Define a string de conexão. O SQLite usará um arquivo na pasta do projeto.
+var connectionString = "Data Source=garcom.db";
+
+// 2. Registra o DbContext
+builder.Services.AddDbContext<GarcomDbContext>(options =>
+{
+    options.UseSqlite(connectionString);
+});
 
 
 // Configuração do MassTransit
